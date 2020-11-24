@@ -4,17 +4,14 @@ class UpdateCategoryTest < ActionDispatch::IntegrationTest
 
     test 'should go to update category form and update a category' do
         
-        category = categories(:one)
+        test_params = { id: 1 , name: 'new name', description: 'new description'} 
 
-        # get edit_category_path
+        category = categories(:one)
         get '/categories/' + category.id.to_s + '/edit'
-        # get categories_path
         assert_response :success
 
-        # put update_category_path, params: { category: { name: 'Personal', description: 'buy milk 1L'} }
-        put update_category_path, params: { category: { id: 1 , name: 'new name', description: 'new description'} }
-        # put update_category_path, params: { category: category }
-        # assert_response :redirect
+        put update_category_path, params: { category: test_params }
+
         assert_redirected_to categories_path
 
         follow_redirect!
@@ -22,8 +19,8 @@ class UpdateCategoryTest < ActionDispatch::IntegrationTest
 
         category_updated = Category.find(category.id)
 
-        assert_equal( category_updated.name, 'new name')
-        assert_equal( category_updated.description, 'new description')
+        assert_equal( category_updated.name, test_params[:name])
+        assert_equal( category_updated.description, test_params[:description])
         
     end
 end
