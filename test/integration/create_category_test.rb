@@ -12,15 +12,12 @@ class CreateCategoryTest < ActionDispatch::IntegrationTest
         get '/categories/new'
         assert_response :success
 
-        # post create_category_path, params: { category: { name: 'new category name', description: 'new category description'} }
         post create_category_path, params: { category: test_params }
         # assert_response :redirect
         assert_redirected_to categories_path
 
         follow_redirect!
         assert_response :success
-        
-
         
         category = Category.find_by(name: test_params[:name])
         assert_equal(category.name, test_params[:name])

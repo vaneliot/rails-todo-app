@@ -1,3 +1,8 @@
+<% if false %>
+  <%= form_for @task, local: true do |form| %>
+  <% end %>
+<% end %>
+
 <%= form_with model: @task, local: true do |form| %>
  
   <% if @task.errors.any? %>
@@ -22,6 +27,26 @@
   <p>
     <%= form.label :description %><br>
     <%= form.text_area :description %>
+  </p>
+
+  <p>
+    <%= form.label :deadline %><br>
+    <%= form.date_field :deadline %>
+  </p>
+
+  <p>
+    <%= form.label :started %><br>
+    <%= form.check_box :started %>
+  </p>
+
+  <p>
+    <%= form.label :completed %><br>
+    <%= form.check_box :completed %>
+  </p>
+
+  <p>
+    <%= form.label :category_id %><br>
+    <%= form.select :category_id, options_from_collection_for_select(Category.all, :id, :name, form.object.category_id) %>
   </p>
  
   <p>

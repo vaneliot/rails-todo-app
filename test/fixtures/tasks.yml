@@ -4,8 +4,23 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one:
 # column: value
+  name: task name
+  description: task description
+  
 #
 two: {}
 # column: value
+
+default: &default
+  name: task name
+  description: task description
+  # category_id: 1 # not needed
+completed:
+  <<: *default
+  completed: true
+
+started:
+  <<: *default
+  started: true

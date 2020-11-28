@@ -18,19 +18,11 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
     end
 
-    # test "should get show" do
-    #     # get show_category
-    #     get '/categories/1'
-    #     # get :show, :id => @category.id
-    #     assert_response :success
-    # end
-
     test "should get show" do
         category = categories(:one)
         get categories_path(category)
         assert_response :success
     end
-    
 
     test "should get new" do
         # get new_category
@@ -68,7 +60,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
         assert_redirected_to categories_path
     end
 
-    # private
+    private
     
     def initialize_category
         @category = categories(:one)

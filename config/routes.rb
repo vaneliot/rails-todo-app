@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   put '/categories/:id/' => 'categories#update', as: 'update_category'
   delete '/categories/:id/' => 'categories#destroy', as: 'destroy_category'
   
+  
   get '/tasks'  => 'tasks#index'
   get '/tasks/new' => 'tasks#new', as: 'new_task'
   post '/tasks' => 'tasks#create', as: 'create_task'
