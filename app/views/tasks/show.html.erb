@@ -1,9 +1,38 @@
 <p>
-  <strong>Title:</strong>
+  <strong>Task name:</strong>
   <%= @task.name %>
 </p>
  
 <p>
-  <strong>Text:</strong>
+  <strong>Description:</strong>
   <%= @task.description %>
 </p>
+
+<p>
+  <% @categories = Category.all %>
+  <strong>filed under <%= link_to @categories.find_by(id: @task.category_id).name, categories_path(id: @task.category_id) %></strong>
+</p>
+
+
+<p>
+  <strong>Started:</strong>
+  <%= @task.started ? 'yes' : 'no' %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= @task.completed ? 'yes' : 'no' %>
+</p>
+
+<p>
+  <strong>Deadline:</strong>
+  <%= @task.deadline %>
+</p>
+
+<p>
+  <strong>Date Created:</strong>
+  <%= @task.created_at %>
+</p>
+
+<br />
+<%= link_to 'Back to tasks', tasks_path %>
