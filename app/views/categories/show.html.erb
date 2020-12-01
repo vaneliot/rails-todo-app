@@ -10,6 +10,7 @@
 
 <% @included_tasks = Task.where(category_id: @category.id)%>
 <% if @included_tasks.length > 0%>
+  <h3>Tasks under @category.name</h3>
   <table>
       <thead>
           <tr>
