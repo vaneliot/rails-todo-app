@@ -9,7 +9,14 @@ class TasksController < ApplicationController
     end
 
     def new
-        @task = Task.new 
+        if (params[:category_id])
+            puts 'creating Task from an existing Category'
+            puts params[:category_id]
+            @task = Task.new(category_id: params[:category_id])
+        else
+            puts 'creating a new Task'
+            @task = Task.new 
+        end
     end
 
     def create

@@ -8,9 +8,11 @@
   <%= @category.description %>
 </p>
 
+<button><%= link_to '+ Create New Task under ' + @category.name , new_task_path(:category_id => @category.id) %></button>
+
 <% @included_tasks = Task.where(category_id: @category.id)%>
 <% if @included_tasks.length > 0%>
-  <h3>Tasks under @category.name</h3>
+  <h3>Tasks under <%=@category.name%></h3>
   <table>
       <thead>
           <tr>
