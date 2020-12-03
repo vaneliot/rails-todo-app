@@ -10,7 +10,7 @@
 
 <% @included_tasks = Task.where(category_id: @category.id)%>
 <% if @included_tasks.length > 0%>
-  <h3>Tasks under @category.name</h3>
+  <h3>Tasks under <%=@category.name%></h3>
   <table>
       <thead>
           <tr>
@@ -38,9 +38,9 @@
                   <td><%= task.completed ? 'yes' : 'no' %></td>
                   <td><%= task.created_at %></td>
 
-                  <td><%= link_to 'Show', show_task_path(task) %></td>
-                  <td><%= link_to 'Edit', edit_task_path(task) %></td>
-                  <td><%= link_to 'Delete', destroy_task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td><%= link_to 'Show', category_task_path(task) %></td>
+                  <td><%= link_to 'Edit', edit_category_task_path(task) %></td>
+                  <td><%= link_to 'Delete', category_task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
                   <% if false %>
                       <td><%= link_to 'Show', task_path(task) %></td>

@@ -1,10 +1,6 @@
 <h1>Edit Task</h1>
 
-<% if false %>
-    <%= render 'form' %>
-<% end %>
-
-<%= form_with method: :put, scope: :task, url: update_task_path, model: @task, local: true do |form| %>
+<%= form_with method: :put, scope: :task, url: category_task_path, model: @task, local: true do |form| %>
     <% if @task.errors.any? %>
         <div id="error_explanation">
         <h2>
@@ -57,4 +53,4 @@
     
 
  
-<%= link_to 'Back', tasks_path %>
+<%= link_to 'Back', category_tasks_path %>

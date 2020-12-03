@@ -3,8 +3,7 @@
   <% end %>
 <% end %>
 
-<%= form_with model: @task, local: true do |form| %>
- 
+<%= form_with url: new_category_task_path, local: true do |form| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2>

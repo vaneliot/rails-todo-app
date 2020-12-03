@@ -1,4 +1,4 @@
-<%= link_to 'Go to Tasks Page', tasks_path %>
+<%= link_to 'Go to Tasks Page', category_tasks_path(@categories, @tasks) %>
 <hr /><br />
 <button><%= link_to '+ Create New Category', new_category_path %></button>
 <% if @categories.length > 0 %>
@@ -20,15 +20,9 @@
                     <td><%= category.description %></td>
                     <td><%= category.created_at %></td>
 
-                    <td><%= link_to 'Show', show_category_path(category) %></td>
+                    <td><%= link_to 'Show', category_path(category) %></td>
                     <td><%= link_to 'Edit', edit_category_path(category) %></td>
-                    <td><%= link_to 'Delete', destroy_category_path(category), method: :delete, data: { confirm: 'Are you sure? All tasks under this category will also be deleted.' } %></td>
-
-                    <% if false %>
-                        <td><%= link_to 'Show', category_path(category) %></td>
-                        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-                        <td><%= link_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                    <% end %>
+                    <td><%= link_to 'Delete', category_path(category), method: :delete, data: { confirm: 'Are you sure? All tasks under this category will also be deleted.' } %></td>
                     
                 </tr>
             <% end %>

@@ -1,6 +1,6 @@
 <%= link_to 'Go to Categories Page', categories_path %>
 <hr /><br />
-<button><%= link_to '+ Create New Task', new_task_path %></button>
+<button><%= link_to '+ Create New Task', new_category_task_path %></button>
 <% if @tasks.length > 0 %>
     <table>
         <thead>
@@ -30,16 +30,9 @@
                     <td><%= task.completed ? 'yes' : 'no' %></td>
                     <td><%= task.created_at %></td>
 
-                    <td><%= link_to 'Show', show_task_path(task) %></td>
-                    <td><%= link_to 'Edit', edit_task_path(task) %></td>
-                    <td><%= link_to 'Delete', destroy_task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-                    <% if false %>
-                        <td><%= link_to 'Show', task_path(task) %></td>
-                        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-                        <td><%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                    <% end %>
-                    
+                    <td><%= link_to 'Show', category_task_path(@category, task) %></td>
+                    <td><%= link_to 'Edit', edit_category_task_path(@category, task) %></td>
+                    <td><%= link_to 'Delete', category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
                 </tr>
             <% end %>
         </tbody>

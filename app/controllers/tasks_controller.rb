@@ -1,7 +1,10 @@
 class TasksController < ApplicationController
     
+    before_action :get_category
+
     def index
-        @tasks = Task.all
+        # @tasks = Task.all
+        @tasks = @category.tasks
     end
 
     def show
@@ -9,13 +12,16 @@ class TasksController < ApplicationController
     end
 
     def new
-        @task = Task.new 
+        # @task = Task.new
+        @task = @category.tasks.build
     end
 
     def create
-        @task = Task.new(task_params)
+        # @task = Task.new
+        @task = @category.tasks.build(task_params)
         if @task.save
-            redirect_to tasks_path
+            # redirect_to tasks_path
+            redirect_to category_tasks_path
         else
             render :new
         end
@@ -29,7 +35,8 @@ class TasksController < ApplicationController
         @task = Task.find(params[:id])
         if @task.update(task_params)
             # redirect_to @task
-            redirect_to tasks_path
+            # redirect_to tasks_path
+            redirect_to category_tasks_path
         else
             render :edit
         end
@@ -39,6 +46,11 @@ class TasksController < ApplicationController
         @task = Task.find(params[:id])
         @task.destroy
         redirect_to tasks_path
+    end
+
+    def get_category
+        @category = Category.find(params[:category_id])
+        # @category = Category.first
     end
 
     private

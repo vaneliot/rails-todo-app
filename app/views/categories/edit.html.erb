@@ -1,6 +1,6 @@
 <h1>Edit Category</h1>
  
-<%= form_with method: :put, scope: :category, url: update_category_path, model: @task, local: true do |f| %>
+<%= form_with method: :put, scope: :category, url: category_path, model: @task, local: true do |f| %>
     <p>
         <% if @category.errors.any? %>
             <ul>
