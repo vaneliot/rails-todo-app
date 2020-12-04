@@ -3,7 +3,7 @@
   <% end %>
 <% end %>
 
-<%= form_with url: new_category_task_path, local: true do |form| %>
+<%= form_with model: [@category, @task], method: 'post', local: true do |form| %>
   <% if @task.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -42,10 +42,11 @@
     <%= form.label :completed %><br>
     <%= form.check_box :completed %>
   </p>
-
+  
+  
   <p>
     <%= form.label :category_id %><br>
-    <%= form.select :category_id, options_from_collection_for_select(Category.all, :id, :name, form.object.category_id) %>
+    <%= form.select :category_id, options_from_collection_for_select(Category.all, :id, :name, @category.id) %>
   </p>
  
   <p>

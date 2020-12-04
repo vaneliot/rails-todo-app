@@ -1,5 +1,7 @@
-<%= link_to 'Go to Tasks Page', category_tasks_path(@categories, @tasks) %>
-<hr /><br />
+<% if false %>
+    <%= link_to 'Go to Tasks Page', category_tasks_path(@categories, @tasks) %>
+    <hr /><br />
+<% end %>
 <button><%= link_to '+ Create New Category', new_category_path %></button>
 <% if @categories.length > 0 %>
     <table>

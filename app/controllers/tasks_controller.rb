@@ -45,12 +45,13 @@ class TasksController < ApplicationController
     def destroy
         @task = Task.find(params[:id])
         @task.destroy
-        redirect_to tasks_path
+        # redirect_to category_task_path
+        redirect_to @category
+        # NOTE: must be redirected to category
     end
 
     def get_category
         @category = Category.find(params[:category_id])
-        # @category = Category.first
     end
 
     private
