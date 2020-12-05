@@ -12,7 +12,7 @@ class CreateCategoryTest < ActionDispatch::IntegrationTest
         get '/categories/new'
         assert_response :success
 
-        post create_category_path, params: { category: test_params }
+        post categories_path, params: { category: test_params }
         # assert_response :redirect
         assert_redirected_to categories_path
 

@@ -35,6 +35,14 @@ class CategoriesController < ApplicationController
         end
     end
 
+    def today
+        @categories = Category.all
+    end
+
+    def all_tasks
+        @categories = Category.all
+    end
+
     def destroy
         @category = Category.find(params[:id])
         @category.destroy

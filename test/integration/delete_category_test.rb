@@ -6,7 +6,7 @@ class DeleteCategoryTest < ActionDispatch::IntegrationTest
         category = categories(:one)
         
         assert_difference('Category.count', -1) do
-            delete destroy_category_path(category)
+            delete category_path(category)
         end
 
         assert_redirected_to categories_path

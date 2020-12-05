@@ -10,7 +10,7 @@ class UpdateCategoryTest < ActionDispatch::IntegrationTest
         get '/categories/' + category.id.to_s + '/edit'
         assert_response :success
 
-        put update_category_path, params: { category: test_params }
+        put category_path, params: { category: test_params }
 
         assert_redirected_to categories_path
 
