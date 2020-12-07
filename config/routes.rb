@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   root to: 'categories#today'
 
+  get '/home' => 'categories#today'
   get '/today' => 'categories#today'
   get '/tasks' => 'categories#all_tasks'
 

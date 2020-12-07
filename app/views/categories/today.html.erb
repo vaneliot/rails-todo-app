@@ -1,11 +1,17 @@
-<%= link_to 'Categories', categories_path %> |
-<%= link_to 'Tasks', tasks_path %>
-<hr />
+
 <% if false %>
     <button><%= link_to '+ Create New Category', new_category_path %></button>
 <% end %>
 <h3>Tasks Due Today</h3>
-<% if @categories.length > 0 %>
+<% task_count = 0 %>
+<% @categories.each { |category|
+    task_count = task_count + category.tasks.length
+} %>
+<% task_today_count = 0 %>
+<% @categories.each { |category|
+    task_today_count = task_today_count + category.tasks.where("DATE(deadline) = ?", Date.today).length
+} %>
+<% if task_today_count > 0 %>
     <table>
         <% if false%>
             <thead>
@@ -76,7 +82,7 @@
         <% end %>
     </table>
 <% else %>
-    <h3>There are no categories yet. Go and create one!</h3>
+    <h4>You have no tasks due today. :)</h4>
 <% end %>
 
 
