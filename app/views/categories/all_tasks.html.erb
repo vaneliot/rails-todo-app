@@ -75,6 +75,16 @@
                         </tr>
                     <% end %>
                 </tbody>
+            <% else %>            
+                <thead>
+                    <tr>
+                        <th> Tasks under <%=category.name%></th>
+                        <td colspan="10"> (no tasks yet) </td>
+                        <th>
+                            <button><%= link_to '+ add a task to ' + category.name, new_category_task_path(category) %></button>
+                        </th>
+                    </tr>
+                </thead>
             <% end %>
         <% end %>
     </table>
