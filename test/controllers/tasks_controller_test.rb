@@ -14,4 +14,5 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     def initialize_category
         @task = categories(:one)
     end
+
 end

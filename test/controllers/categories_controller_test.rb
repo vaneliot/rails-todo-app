@@ -60,6 +60,16 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
         assert_redirected_to categories_path
     end
 
+    test 'should get all tasks page' do
+        get '/tasks'
+        assert_response :success
+    end
+
+    test 'should get home page' do
+        get '/'
+        assert_response :success
+    end
+
     private
     
     def initialize_category
