@@ -44,7 +44,6 @@
                         <th>Deadline</th>
                         <th>Started</th>
                         <th>Completed</th>
-                        <th>Date Created</th>
                         <th colspan="3">options</th>
                         <th>
                             <button><%= link_to '+ add a task to ' + category.name, new_category_task_path(category) %></button>
@@ -61,7 +60,6 @@
                             <td><%= task.deadline %></td>
                             <td><%= task.started ? 'yes' : 'no' %></td>
                             <td><%= task.completed ? 'yes' : 'no' %></td>
-                            <td><%= task.created_at %></td>
 
                             <td><%= link_to 'Show', category_task_path(task, :category_id => category.id) %></td>
                             <td><%= link_to 'Edit', edit_category_task_path(task, :category_id => category.id, :id => task.id) %></td>
@@ -74,7 +72,7 @@
                 <thead>
                     <tr>
                         <th> Tasks under <%=category.name%></th>
-                        <td colspan="9"> (no tasks yet) </td>
+                        <td colspan="8"> (no tasks yet) </td>
                         <th>
                             <button><%= link_to '+ add a task to ' + category.name, new_category_task_path(category) %></button>
                         </th>
