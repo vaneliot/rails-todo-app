@@ -58,6 +58,7 @@
                 </thead>
                 <tbody>
                     <% @categories = Category.all %>
+                    <% @users = User.all %>
                     <% @included_tasks.each do |task| %>
                         <tr>
                             <td> > </td>
@@ -70,7 +71,7 @@
                             <td><%= link_to 'Show', category_task_path(task, :category_id => category.id) %></td>
                             <td><%= link_to 'Edit', edit_category_task_path(task, :category_id => category.id, :id => task.id) %></td>
                             <td><%= link_to 'Delete', category_task_path(task, :category_id => category.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                            <td></td>
+                            <td> owned by <%= @users.find_by(id: task.user_id).email %></td>
                         </tr>
                     <% end %>
                 </tbody>

@@ -14,11 +14,13 @@ class TasksController < ApplicationController
     def new
         # @task = Task.new
         @task = @category.tasks.build
+        @task.user = current_user
     end
-
+    
     def create
         # @task = Task.new
         @task = @category.tasks.build(task_params)
+        @task.user = current_user
         if @task.save
             # redirect_to tasks_path
             redirect_to category_tasks_path
@@ -56,7 +58,7 @@ class TasksController < ApplicationController
 
     private
     def task_params
-        params.require(:task).permit(:name, :description, :deadline, :completed, :started, :category_id)
+        params.require(:task).permit(:name, :description, :deadline, :completed, :started, :category_id, :user_id)
     end
     
 end

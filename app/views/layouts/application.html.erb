@@ -10,6 +10,8 @@
   </head>
 
   <body>
+    <span class="notice"><%= notice %></span>
+    <span class="alert"><%= alert %></span>
     <% if user_signed_in? %>
       <span class="nav_links">
         <%= link_to 'Home', '/' %> |
@@ -26,7 +28,7 @@
             <li><%= link_to 'Sign Up', new_user_registration_path %></li>
         <% end %>
       </span>
-      <br /><hr />
+      <br /><br /><hr />
     <% end %>
     <%= yield %>
   </body>

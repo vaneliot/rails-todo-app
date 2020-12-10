@@ -20,7 +20,7 @@
               
               <th>Name</th>
               <th>Description</th>
-              <th>Category</th>
+              <th>Owner</th>
               <th>Deadline</th>
               <th>Started</th>
               <th>Completed</th>
@@ -30,12 +30,13 @@
       </thead>
       <tbody>
           <% @categories = Category.all %>
+          <% @users = User.all %>
           <% @included_tasks.each do |task| %>
               <tr>
                   
                   <td><%= task.name %></td>
                   <td><%= task.description %></td>
-                  <td><%= @categories.find_by(id: task.category_id).name %></td>
+                  <td><%= @users.find_by(id: task.user_id).email %></td>
                   <td><%= task.deadline %></td>
                   <td><%= task.started ? 'yes' : 'no' %></td>
                   <td><%= task.completed ? 'yes' : 'no' %></td>

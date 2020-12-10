@@ -1,6 +1,7 @@
 class CreateTasks < ActiveRecord::Migration[6.0]
   def change
-    # add_column :tasks, :category_id, :integeradd_index :tasks, :category_id
+    # add_column :tasks, :category_id, :integer
+    # add_column :tasks, :user_id, :integer
 
     create_table :tasks do |t|
 
@@ -15,6 +16,7 @@ class CreateTasks < ActiveRecord::Migration[6.0]
       t.boolean "completed", default: false, null: false
 
       t.integer "category_id"
+      t.integer "user_id"
 
       # t.datetime "created_at", precision: 6, null: false
       # t.datetime "updated_at", precision: 6, null: false
