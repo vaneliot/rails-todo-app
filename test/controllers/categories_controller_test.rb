@@ -2,7 +2,10 @@ require 'test_helper'
 
 class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
+    include Devise::Test::IntegrationHelpers
+
     # # called before every single test
+    setup :initialize_login
     setup :initialize_category
  
     # called after every single test
@@ -68,12 +71,27 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     test 'should get home page' do
         get '/'
         assert_response :success
+
+        get '/home'
+        assert_response :success
+
+        get '/today'
+        assert_response :success
     end
 
     private
     
     def initialize_category
         @category = categories(:one)
+    end
+
+    def initialize_login
+        get '/users/sign_in'
+        sign_in users(:one)
+        post user_session_url
+
+        # follow_redirect!
+        # assert_response :success
     end
 
 end

@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class UpdateCategoryTest < ActionDispatch::IntegrationTest
+    
+    include Devise::Test::IntegrationHelpers
+
+    setup :initialize_login
 
     test 'should go to update category form and update a category' do
         
@@ -23,4 +27,16 @@ class UpdateCategoryTest < ActionDispatch::IntegrationTest
         assert_equal( category_updated.description, test_params[:description])
         
     end
+
+    private
+
+    def initialize_login
+        get '/users/sign_in'
+        sign_in users(:one)
+        post user_session_url
+
+        # follow_redirect!
+        # assert_response :success
+    end
+    
 end
